@@ -6,24 +6,23 @@ class Counter extends Component {
   };
 
   handleIncrement = () => {
-    console.log("Increment Clicked", this);
+    this.setState({ count: this.state.count + 1 });
   };
+
+  doHandleIncrement = () => {
+    this.handleIncrement({ id: 1 });
+  };
+
   render() {
     return (
       <React.Fragment>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
-          onClick={this.handleIncrement}
+          onClick={this.doHandleIncrement}
           className="btn btn-secondary btn-small"
         >
           increment
         </button>
-
-        <ul>
-          {this.state.tags.map(tag => (
-            <li>{tag}</li>
-          ))}
-        </ul>
       </React.Fragment>
     );
   }
@@ -41,6 +40,3 @@ class Counter extends Component {
 }
 
 export default Counter;
-
-/* JSX expression which renders h1 tag, hello world.
- */
